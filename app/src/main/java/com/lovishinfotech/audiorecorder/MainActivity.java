@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     Button  buttonPlayLastRecordAudio,
             buttonStopPlayingRecording ;
     String AudioSavePathInDevice = null;
+    long totalSize = 0;
+
     MediaRecorder mediaRecorder ;
     Random random ;
     String RandomAudioFileName = "Abc";
@@ -55,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 if(checkPermission()) {
 
                     AudioSavePathInDevice =
-                            Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_MUSIC).getPath() + "/" +
+                            Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS).getPath() + "/" +
                                     CreateRandomAudioFileName(5) + "AudioRecording.wav";
+                    Log.d("data", AudioSavePathInDevice);
 
                     MediaRecorderReady();
 
@@ -216,4 +219,5 @@ public class MainActivity extends AppCompatActivity {
         intent.setDataAndType(Uri.fromFile(file), "*/*");
         startActivity(intent);
     }
+
 }
